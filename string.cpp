@@ -41,12 +41,34 @@ String& String::operator=(const String& rhs) {
 String& String::operator=(const char* rhs) {
     delete[] data;
     size = strlen(rhs);
-    data = new char[size + 1];
-    strcpy(data, rhs);
+
+    if (size > 0) {
+        data = new char[size + 1];
+        strcpy(data, rhs);
+    } else data = nullptr;
 
     return *this;
 }
 
 bool operator==(const char* lhs, const String& rhs) {
     return rhs == lhs;
+}
+
+std::ostream& operator<<(std::ostream& os, const String& str) {
+    return os << str.c_str();
+}
+
+std::istream& operator>>(std::istream& is, String& str) {
+    str = "";
+    char c;
+
+    while (is >> c) {
+        if (isspace(c)) {
+            is.putback(c);
+            break;
+        }
+        str += c;
+    }
+
+    return is;
 }

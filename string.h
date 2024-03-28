@@ -63,5 +63,7 @@ public:
 };
 
 bool operator==(const char* lhs, const String& rhs);
+std::ostream& operator<<(std::ostream& os, const String& str);
+std::istream& operator>>(std::istream& is, String& str);
 
 #endif //NAGYHAZI_2_STRING_H
