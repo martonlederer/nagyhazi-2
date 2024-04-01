@@ -3,6 +3,7 @@
 //
 
 #include "string.h"
+#include <cstring>
 
 // másoló konstruktor
 String::String(const String& rhs) {
@@ -50,6 +51,19 @@ String& String::operator=(const char* rhs) {
     return *this;
 }
 
+String String::operator+(const String& rhs) const {
+    String tmp;
+    delete[] tmp.data;
+
+    tmp.size = size + rhs.size + 1;
+    tmp.data = new char[tmp.size];
+
+    strcpy(tmp.data, data);
+    strcat(tmp.data, rhs.data);
+
+    return tmp;
+}
+
 bool operator==(const char* lhs, const String& rhs) {
     return rhs == lhs;
 }
@@ -67,7 +81,7 @@ std::istream& operator>>(std::istream& is, String& str) {
             is.putback(c);
             break;
         }
-        str += c;
+        str = str + String(c);
     }
 
     return is;

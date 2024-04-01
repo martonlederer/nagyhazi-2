@@ -60,6 +60,7 @@ public:
     bool operator==(const char* rhs) const;
     String& operator=(const String& rhs);
     String& operator=(const char* rhs);
+    String operator+(const String& rhs) const;
 };
 
 bool operator==(const char* lhs, const String& rhs);

@@ -8,4 +8,5 @@ set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 
 add_executable(nagyhazi_2 main.cpp
         string.cpp
-        string.h)
+        string.h
+        gtest_lite.h)
