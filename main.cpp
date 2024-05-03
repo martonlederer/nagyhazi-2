@@ -1,5 +1,8 @@
-#include "String.h"
 #include <sstream>
+
+#include "String.h"
+#include "PhoneNumber.h"
+#include "Name.h"
 
 // teszt környezet definiálása makróval
 #ifndef TEST_ENV
@@ -113,6 +116,34 @@ int main() {
         ss >> str;
 
         EXPECT_STREQ(val, str.c_str());
+    } END;
+
+    //
+    // class PhoneNumber test
+    //
+
+    TEST(PhoneNumber, all) {
+        PhoneNumber num = PhoneNumber("+36308731649");
+
+        EXPECT_EQ(36, num.getCountryCode());
+        EXPECT_STREQ("+36 30 873 1649", num.c_str().c_str());
+        EXPECT_STREQ("🇭🇺 Magyarorszag", num.getCountry().c_str());
+    } END;
+
+    //
+    // class Name test
+    //
+
+    TEST(Name, No Nickname) {
+        Name name = Name("John", "Doe");
+
+        EXPECT_STREQ("Doe John", name.getFullName().c_str());
+    } END;
+
+    TEST(Name, With Nickname) {
+        Name name = Name("John", "Doe", "Laci");
+
+        EXPECT_STREQ("Doe John (Laci)", name.getFullName().c_str());
     } END;
 
     GTEND(std::cerr);

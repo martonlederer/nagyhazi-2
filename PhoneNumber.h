@@ -18,7 +18,7 @@ public:
     /**
      * Ország nevének visszaadása
      */
-    int getCountry() const;
+    String getCountry() const;
 
     /**
      * Országkód visszaadása
