@@ -15,7 +15,7 @@
 
 int main() {
 // teszt üzemmód
-#ifdef TEST_ENV
+#if defined(TEST_ENV) || defined(CPORTA)
     GTINIT(std::cin);
 
     //
