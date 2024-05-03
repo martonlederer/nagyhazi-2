@@ -1,15 +1,18 @@
-#include "gtest_lite.h"
 #include "String.h"
 #include <sstream>
 
 // teszt környezet definiálása makróval
-#ifndef TEST
-#define TEST
+#ifndef TEST_ENV
+#define TEST_ENV
+#endif
+
+#ifdef TEST_ENV
+#include "gtest_lite.h"
 #endif
 
 int main() {
 // teszt üzemmód
-#ifdef TEST
+#ifdef TEST_ENV
     GTINIT(std::cin);
 
     //
