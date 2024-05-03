@@ -1,7 +1,7 @@
 #ifndef NAGYHAZI_2_CONTACT_H
 #define NAGYHAZI_2_CONTACT_H
 
-#include "string.h"
+#include "String.h"
 #include "PhoneNumber.h"
 #include "Name.h"
 

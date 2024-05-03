@@ -1,5 +1,5 @@
 #include "gtest_lite.h"
-#include "string.h"
+#include "String.h"
 #include <sstream>
 
 int main() {

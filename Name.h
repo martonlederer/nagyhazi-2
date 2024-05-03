@@ -1,7 +1,7 @@
 #ifndef NAGYHAZI_2_NAME_H
 #define NAGYHAZI_2_NAME_H
 
-#include "string.h"
+#include "String.h"
 
 class Name {
 public:

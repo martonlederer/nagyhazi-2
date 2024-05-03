@@ -1,7 +1,7 @@
 #ifndef NAGYHAZI_2_PHONENUMBER_H
 #define NAGYHAZI_2_PHONENUMBER_H
 
-#include "string.h"
+#include "String.h"
 
 class PhoneNumber {
     int country, num;

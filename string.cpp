@@ -2,7 +2,7 @@
 // Created by Marton Lederer on 28/03/2024.
 //
 
-#include "string.h"
+#include "String.h"
 #include <cstring>
 
 // másoló konstruktor
