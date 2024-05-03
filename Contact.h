@@ -15,7 +15,7 @@ public:
 
     Name getName() const { return name; }
     String getAddress() const { return address; }
-    PhoneNumber getNumber() const { return number; };
+    PhoneNumber getNumber() const { return number; }
     PhoneNumber getWorkNumber() const { return workNumber; }
 };
 

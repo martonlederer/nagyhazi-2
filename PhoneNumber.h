@@ -8,6 +8,8 @@ class PhoneNumber {
 public:
     PhoneNumber(String raw);
     String c_str() const;
+    int getCountry() const;
+    int getCountryCode() const;
 };
 
 #endif //NAGYHAZI_2_PHONENUMBER_H

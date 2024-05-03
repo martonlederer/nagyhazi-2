@@ -9,4 +9,8 @@ set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 add_executable(nagyhazi_2 main.cpp
         string.cpp
         string.h
-        gtest_lite.h)
+        gtest_lite.h
+        PhoneNumber.h
+        Name.h
+        Contact.h
+        List.hpp)
