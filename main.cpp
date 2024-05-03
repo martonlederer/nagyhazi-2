@@ -2,7 +2,14 @@
 #include "String.h"
 #include <sstream>
 
+// teszt környezet definiálása makróval
+#ifndef TEST
+#define TEST
+#endif
+
 int main() {
+// teszt üzemmód
+#ifdef TEST
     GTINIT(std::cin);
 
     //
@@ -106,5 +113,8 @@ int main() {
     } END;
 
     GTEND(std::cerr);
+#else
+    // normál üzemmód (console app)
+#endif
     return 0;
 }
