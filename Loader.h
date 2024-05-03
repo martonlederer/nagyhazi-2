@@ -10,14 +10,36 @@
 #include "Contact.h"
 
 class Loader {
+    // névjegyek
     List<Contact*> contacts;
 public:
+    /**
+     * Új névjegy felvétele
+     */
     void addContact(Contact c);
+    /**
+     * Névjegy eltávolítása
+     */
     void removeContact(size_t idx);
+    /**
+     * Névjegyek listázása
+     */
     void list();
+    /*
+     * Statisztika: melyik országhoz hány telefonszám tartozik
+     */
     void countryStats();
+    /**
+     * Névjegy keresése szöveg alapján
+     */
     void search(String q);
+    /**
+     * Névjegyek betöltése
+     */
     void load();
+    /**
+     * Névjegyek mentése
+     */
     void save();
 };
 

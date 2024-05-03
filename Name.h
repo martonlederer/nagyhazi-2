@@ -5,10 +5,18 @@
 
 class Name {
 public:
+    /**
+     * Keresztnév, vezetéknév, becenév
+     */
     String first, last, nickname;
 
+    // konstruktorok
     Name(String first, String last);
     Name(String first, String last, String nickname);
+
+    /**
+     * Teljes név összeillesztése
+     */
     String getFullName() const;
 };
 
