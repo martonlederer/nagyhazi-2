@@ -16,7 +16,7 @@ public:
     /**
      * Új névjegy felvétele
      */
-    void addContact(Contact c);
+    void addContact(Contact* c);
     /**
      * Névjegy eltávolítása
      */
@@ -41,6 +41,10 @@ public:
      * Névjegyek mentése
      */
     void save();
+    /**
+     * Névjegyek visszaadása
+     */
+    List<Contact*> getContacts() const;
 };
 
 #endif //NAGYHAZI_2_LOADER_H

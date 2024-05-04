@@ -1,17 +1,19 @@
 #include <sstream>
+#include <unistd.h>
 
 #include "String.h"
 #include "PhoneNumber.h"
 #include "Name.h"
 #include "List.hpp"
 #include "Contact.h"
+#include "Loader.h"
 
 // teszt környezet definiálása makróval
 #ifndef TEST_ENV
 #define TEST_ENV
 #endif
 
-#ifdef TEST_ENV
+#if defined(TEST_ENV) || defined(CPORTA)
 #include "gtest_lite.h"
 #endif
 
@@ -226,11 +228,35 @@ int main() {
     //
 
     TEST(Loader, contacts) {
+        Loader manager = Loader();
+        Contact* c1 = new Contact("Doe John", PhoneNumber("+36601387744"));
 
+        manager.addContact(c1);
+        manager.list();
+        manager.countryStats();
+        EXPECT_EQ((size_t) 1u, manager.getContacts().size());
+
+        manager.removeContact(0);
+        manager.list();
+        manager.countryStats();
+        EXPECT_EQ((size_t) 0u, manager.getContacts().size());
     } END;
 
     TEST(Loader, save) {
+        Loader manager = Loader();
+        Contact* c1 = new Contact("Doe John", PhoneNumber("+36601387744"));
 
+        manager.addContact(c1);
+
+        manager.save();
+        EXPECT_NE(-1, access("contacts.txt", F_OK));
+    } END;
+
+    TEST(Loader, save) {
+        Loader manager = Loader();
+        manager.load();
+
+        EXPECT_NE((size_t) 0u, manager.getContacts().size());
     } END;
 
     GTEND(std::cerr);
