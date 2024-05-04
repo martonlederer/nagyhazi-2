@@ -13,7 +13,7 @@ public:
     /**
      * Telefonszám összeillesztése string-be
      */
-    String c_str() const;
+    String toString() const;
 
     /**
      * Ország nevének visszaadása

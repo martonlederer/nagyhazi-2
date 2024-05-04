@@ -11,6 +11,7 @@ public:
     String first, last, nickname;
 
     // konstruktorok
+    Name(String full);
     Name(String first, String last);
     Name(String first, String last, String nickname);
 

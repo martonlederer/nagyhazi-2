@@ -34,6 +34,11 @@ public:
      */
     T remove(size_t idx);
 
+    /**
+     * Elem hozzáférése index szerint
+     */
+    T& operator[](size_t idx) const;
+
     // lista iterátor
     class iterator {
         ListItem* curr;

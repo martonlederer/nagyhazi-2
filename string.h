@@ -61,6 +61,7 @@ public:
     String& operator=(const String& rhs);
     String& operator=(const char* rhs);
     String operator+(const String& rhs) const;
+    char& operator[](size_t idx) const;
 };
 
 bool operator==(const char* lhs, const String& rhs);

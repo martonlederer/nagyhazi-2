@@ -3,6 +3,8 @@
 #include "String.h"
 #include "PhoneNumber.h"
 #include "Name.h"
+#include "List.hpp"
+#include "Contact.h"
 
 // teszt környezet definiálása makróval
 #ifndef TEST_ENV
@@ -126,7 +128,7 @@ int main() {
         PhoneNumber num = PhoneNumber("+36308731649");
 
         EXPECT_EQ(36, num.getCountryCode());
-        EXPECT_STREQ("+36 30 873 1649", num.c_str().c_str());
+        EXPECT_STREQ("+36 30 873 1649", num.toString().c_str());
         EXPECT_STREQ("🇭🇺 Magyarorszag", num.getCountry().c_str());
     } END;
 
@@ -144,6 +146,91 @@ int main() {
         Name name = Name("John", "Doe", "Laci");
 
         EXPECT_STREQ("Doe John (Laci)", name.getFullName().c_str());
+    } END;
+
+    TEST(Name, Parse Full) {
+        Name name = Name("Lederer Marton");
+
+        EXPECT_STREQ("Marton", name.first.c_str());
+        EXPECT_STREQ("Lederer", name.last.c_str());
+    } END;
+
+    //
+    // class List test
+    //
+
+    TEST(List, Empty) {
+        List<int> list;
+
+        EXPECT_EQ((size_t) 0u, list.size());
+
+        list.push(3);
+        list.push(1);
+
+        EXPECT_EQ((size_t) 2u, list.size()) << "push() nem adta hozza az elemeket" << std::endl;
+        EXPECT_EQ(3, list[0]);
+        EXPECT_EQ(1, list[1]);
+
+        list.remove(0);
+
+        EXPECT_EQ((size_t) 1u, list.size()) << "remove() nem szedte ki az elemet" << std::endl;
+        EXPECT_EQ(1, list[0]);
+    } END;
+
+    TEST(List, Not Empty) {
+        int base[2] = { 1, 2 };
+        List<int> list = List<int>(base, 2);
+
+        EXPECT_EQ((size_t) 2u, list.size()) << "List(array, len) nem hozta letre a megfelelő hosszusagu listat" << std::endl;
+        EXPECT_EQ(1, list[0]);
+        EXPECT_EQ(2, list[1]);
+
+        list.remove(1);
+
+        EXPECT_EQ((size_t) 1u, list.size());
+        EXPECT_EQ(1, list[0]);
+    } END;
+
+    TEST(List, iterator) {
+        int base[2] = { 1, 2 };
+        List<int> list = List<int>(base, 2);
+
+        size_t i = 0;
+        for (List<int>::iterator it = list.begin(); it != list.end(); ++it) {
+            EXPECT_EQ(base[i++], *it) << "Az iterator nem jo erteket adott vissza" << std::endl;
+        }
+    } END;
+
+    //
+    // class Contact test
+    //
+
+    TEST(Contact, all) {
+        Contact c = Contact(
+            "Lederer Marton",
+            PhoneNumber("+36708341340"),
+            "Marci",
+            "1034 Budapest, Prater utca 5.",
+            PhoneNumber("+3618427433")
+        );
+
+        EXPECT_STREQ("Marton", c.getName().first.c_str());
+        EXPECT_STREQ("Lederer Marton (Marci)", c.getName().getFullName().c_str());
+        EXPECT_STREQ("+36 70 834 1340", c.getNumber().toString().c_str());
+        EXPECT_STREQ("1034 Budapest, Prater utca 5.", c.getAddress().c_str());
+        EXPECT_STREQ("+36 1 842 7433", c.getWorkNumber().toString().c_str());
+    } END;
+
+    //
+    // class Loader test
+    //
+
+    TEST(Loader, contacts) {
+
+    } END;
+
+    TEST(Loader, save) {
+
     } END;
 
     GTEND(std::cerr);
