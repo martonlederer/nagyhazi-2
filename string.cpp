@@ -64,6 +64,13 @@ String String::operator+(const String& rhs) const {
     return tmp;
 }
 
+char& String::operator[](size_t idx) const {
+    if (idx > size) {
+        throw std::out_of_range ("Túl nagy index");
+    }
+    return data[idx];
+}
+
 bool operator==(const char* lhs, const String& rhs) {
     return rhs == lhs;
 }

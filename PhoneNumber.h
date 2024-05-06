@@ -2,13 +2,19 @@
 #define NAGYHAZI_2_PHONENUMBER_H
 
 #include "String.h"
+#include <cstring>
+
+struct Country {
+    const char* dialCode;
+    const char* name;
+};
 
 class PhoneNumber {
     // telefonszám és országkód külön
-    int country, num;
+    String country, num;
 public:
     // telefonszám feldolgozása string-ből
-    PhoneNumber(String raw);
+    PhoneNumber(const String& raw);
 
     /**
      * Telefonszám összeillesztése string-be
@@ -23,7 +29,7 @@ public:
     /**
      * Országkód visszaadása
      */
-    int getCountryCode() const;
+    String getCountryCode() const { return country; }
 };
 
 #endif //NAGYHAZI_2_PHONENUMBER_H
