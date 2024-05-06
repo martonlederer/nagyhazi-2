@@ -80,5 +80,49 @@ T& List<T>::operator[](size_t idx) const {
         throw std::out_of_range ("Túl nagy index");
     }
 
+    return curr->value;
+}
+
+template<typename T>
+typename List<T>::iterator& List<T>::iterator::operator++() {
+    if (curr != nullptr)
+        curr = curr->next;
+    return *this;
+}
+
+template<typename T>
+typename List<T>::iterator List<T>::iterator::operator++(int) {
+    List<T>::iterator it = *this;
+    operator++();
+    return it;
+}
+
+template<typename T>
+T& List<T>::iterator::operator*() const {
+    return curr->value;
+}
+
+template<typename T>
+T* List<T>::iterator::operator->() const {
     return &(curr->value);
+}
+
+template<typename T>
+bool List<T>::iterator::operator==(List<T>::iterator it) const {
+    return curr == it.curr;
+}
+
+template<typename T>
+bool List<T>::iterator::operator!=(List<T>::iterator it) const {
+    return !operator==(it);
+}
+
+template<typename T>
+typename List<T>::iterator List<T>::begin() {
+    return List<T>::iterator(elements);
+}
+
+template<typename T>
+typename List<T>::iterator List<T>::end() {
+    return List<T>::iterator(nullptr);
 }

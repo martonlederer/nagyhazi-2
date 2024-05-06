@@ -46,7 +46,7 @@ public:
     class iterator {
         ListItem* curr;
     public:
-        iterator(ListItem* e);
+        iterator(ListItem* e = nullptr) : curr(e) {}
         iterator& operator++();
         iterator operator++(int);
         T& operator*() const;
