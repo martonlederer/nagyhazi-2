@@ -2,6 +2,7 @@
 #define NAGYHAZI_2_NAME_H
 
 #include "String.h"
+#include <cstring>
 
 class Name {
 public:
@@ -11,9 +12,9 @@ public:
     String first, last, nickname;
 
     // konstruktorok
-    Name(String full);
-    Name(String first, String last);
-    Name(String first, String last, String nickname);
+    Name(const String& full);
+    Name(const String& first, const String& last) : first(first), last(last) {}
+    Name(const String& first, const String& last, const String& nickname) : first(first), last(last), nickname(nickname) {}
 
     /**
      * Teljes név összeillesztése
