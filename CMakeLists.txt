@@ -15,4 +15,5 @@ add_executable(nagyhazi_2 main.cpp
         Contact.h
         List.hpp
         PhoneNumber.cpp
-        Name.cpp)
+        Name.cpp
+        List.cpp)

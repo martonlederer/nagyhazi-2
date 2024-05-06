@@ -4,6 +4,7 @@
 
 #include "String.h"
 #include <cstring>
+#include <stdexcept>
 
 // másoló konstruktor
 String::String(const String& rhs) {

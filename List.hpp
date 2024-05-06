@@ -16,13 +16,16 @@ class List {
     size_t count;
 public:
     // konstruktorok
-    List();
-    List(T array[], size_t len);
+    List() : elements(nullptr), count(0) {}
+    List(T array[], size_t len) : count(len) {
+        for (size_t i = 0; i < len; i++)
+            push(array[i]);
+    }
 
     /**
      * Méret visszaadása
      */
-    size_t size() const;
+    size_t size() const { return count; }
 
     /**
      * Új elem hozzáadása a listához
