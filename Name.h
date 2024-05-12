@@ -12,8 +12,7 @@ public:
     String first, last, nickname;
 
     // konstruktorok
-    Name(const String& full);
-    Name(const String& first, const String& last) : first(first), last(last) {}
+    Name(const String& full, const String& nickname);
     Name(const String& first, const String& last, const String& nickname) : first(first), last(last), nickname(nickname) {}
 
     /**

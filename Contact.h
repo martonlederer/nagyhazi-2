@@ -4,6 +4,7 @@
 #include "String.h"
 #include "PhoneNumber.h"
 #include "Name.h"
+#include <iostream>
 
 class Contact {
     // név, cím, telefonszámok
@@ -12,8 +13,13 @@ class Contact {
     PhoneNumber number, workNumber;
 public:
     // konstruktorok
-    Contact(String name, PhoneNumber phoneNumber);
-    Contact(String name, PhoneNumber phoneNumber, String nickname, String address, PhoneNumber work);
+    Contact(
+        String& name,
+        String& phoneNumber,
+        String& nickname,
+        String& address,
+        String& work
+    ) : name(name, nickname), address(address), number(phoneNumber), workNumber(work) {}
 
     /**
      * Név visszaadása
@@ -35,5 +41,7 @@ public:
      */
     PhoneNumber getWorkNumber() const { return workNumber; }
 };
+
+std::ostream& operator<<(std::ostream& os, const Contact& c);
 
 #endif //NAGYHAZI_2_CONTACT_H

@@ -5,12 +5,13 @@
 #include "Name.h"
 #include <cstring>
 
-Name::Name(const String& full) {
+Name::Name(const String& full, const String& nname) {
     char* tempFull = new char[full.len() + 1];
     strcpy(tempFull, full.c_str());
     strtok(tempFull, " ");
     last = String(tempFull);
     first = String(full.c_str() + strlen(tempFull) + 1);
+    nickname = nname;
 }
 
 String Name::getFullName() const {

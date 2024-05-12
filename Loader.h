@@ -8,6 +8,7 @@
 #include "List.hpp"
 #include "String.h"
 #include "Contact.h"
+#include <iostream>
 
 class Loader {
     // névjegyek
@@ -44,7 +45,7 @@ public:
     /**
      * Névjegyek visszaadása
      */
-    List<Contact*> getContacts() const;
+    List<Contact*> getContacts() const { return contacts; }
 };
 
 #endif //NAGYHAZI_2_LOADER_H
