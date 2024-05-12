@@ -23,6 +23,17 @@ public:
             push(array[i]);
     }
 
+    ~List() {
+        ListItem* list = elements, curr;
+
+        while (list != nullptr) {
+            curr = list;
+            list = list->next;
+
+            delete curr;
+        }
+    }
+
     /**
      * Méret visszaadása
      */
@@ -63,15 +74,16 @@ public:
 
             delete elements;
             elements = next;
+            count--;
 
             return val;
         }
 
-        size_t i = 0;
+        size_t i = 1;
         ListItem* curr = elements->next;
         ListItem* prev = elements;
 
-        while (curr != nullptr && i <= idx) {
+        while (curr != nullptr && i < idx) {
             prev = curr;
             curr = curr->next;
             i++;
@@ -84,6 +96,7 @@ public:
         T val = curr->value;
         prev->next = curr->next;
         delete curr;
+        count--;
 
         return val;
     }
