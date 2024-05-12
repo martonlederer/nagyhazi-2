@@ -129,7 +129,7 @@ int main() {
     TEST(PhoneNumber, all) {
         PhoneNumber num = PhoneNumber("+36308731649");
 
-        EXPECT_EQ(36, num.getCountryCode());
+        EXPECT_STREQ("36", num.getCountryCode().c_str());
         EXPECT_STREQ("+36 30 873 1649", num.toString().c_str());
         EXPECT_STREQ("🇭🇺 Magyarorszag", num.getCountry().c_str());
     } END;

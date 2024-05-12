@@ -14,7 +14,7 @@ class PhoneNumber {
     String country, num;
 public:
     // telefonszám feldolgozása string-ből
-    PhoneNumber(const String& raw);
+    explicit PhoneNumber(const String& raw);
 
     /**
      * Telefonszám összeillesztése string-be

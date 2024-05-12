@@ -70,15 +70,14 @@ PhoneNumber::PhoneNumber(const String& raw) {
 
 String PhoneNumber::toString() const {
     String full = '+';
-    full = full + country;
-    full = full + num;
+    full = full + country + " " + num;
     return full;
 }
 
 String PhoneNumber::getCountry() const {
-    for (size_t i = 0; i < 46; i++)
-        if (strcmp(countries[i].dialCode, country.c_str()) == 0)
-            return { countries[i].name };
+    for (auto & c : countries)
+        if (strcmp(c.dialCode, country.c_str()) == 0)
+            return { c.name };
 
     return { "" };
 }
