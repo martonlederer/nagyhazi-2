@@ -16,4 +16,5 @@ add_executable(nagyhazi_2 main.cpp
         List.hpp
         PhoneNumber.cpp
         Name.cpp
+        Loader.cpp
 )

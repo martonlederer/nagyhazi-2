@@ -9,6 +9,7 @@
 #include "String.h"
 #include "Contact.h"
 #include <iostream>
+#include <cstring>
 
 class Loader {
     // névjegyek
@@ -33,7 +34,7 @@ public:
     /**
      * Névjegy keresése szöveg alapján
      */
-    void search(String q);
+    void search(const String& q);
     /**
      * Névjegyek betöltése
      */

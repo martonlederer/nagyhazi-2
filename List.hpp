@@ -24,7 +24,7 @@ public:
     }
 
     ~List() {
-        ListItem* list = elements, curr;
+        ListItem* list = elements, curr = elements;
 
         while (list != nullptr) {
             curr = list;
@@ -152,6 +152,14 @@ public:
     // iterátor inicializáció funkciók
     iterator begin() { return List<T>::iterator(elements); }
     iterator end() { return List<T>::iterator(nullptr); }
+
+    /**
+     * Egy másik lista hozzáfűzése ehhez a listához
+     */
+    void concat(List<T>& list) {
+        for (List<T>::iterator it = list.begin(); it != list.end(); ++it)
+            push(*it);
+    }
 };
 
 #endif
