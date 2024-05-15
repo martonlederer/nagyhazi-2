@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <stdexcept>
 
 /**
  * Dinamikus string osztály

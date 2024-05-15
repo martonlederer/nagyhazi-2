@@ -9,6 +9,11 @@ struct Country {
     const char* name;
 };
 
+struct CountryStat {
+    String countryName;
+    int count;
+};
+
 class PhoneNumber {
     // telefonszám és országkód külön
     String country, num;

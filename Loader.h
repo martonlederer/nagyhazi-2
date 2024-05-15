@@ -8,8 +8,10 @@
 #include "List.hpp"
 #include "String.h"
 #include "Contact.h"
+#include "PhoneNumber.h"
 #include <iostream>
 #include <cstring>
+#include <algorithm>
 
 class Loader {
     // névjegyek

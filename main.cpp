@@ -8,18 +8,13 @@
 #include "Contact.h"
 #include "Loader.h"
 
-// teszt környezet definiálása makróval
-#ifndef TEST_ENV
-#define TEST_ENV
-#endif
-
-#if defined(TEST_ENV) || defined(CPORTA)
+#ifndef CPORTA
 #include "gtest_lite.h"
 #endif
 
 int main() {
 // teszt üzemmód
-#if defined(TEST_ENV) || defined(CPORTA)
+#ifndef CPORTA
     GTINIT(std::cin);
 
     //
@@ -104,7 +99,7 @@ int main() {
     } END;
 
     std::stringstream ss;
-    const char* val = "streamelt ertek";
+    const char* val = "streamelt";
 
     // << operátor
     TEST(String, operator<<) {
@@ -116,7 +111,7 @@ int main() {
 
     // >> operátor
     TEST(String, operator>>) {
-        String str;
+        String str = "";
         ss >> str;
 
         EXPECT_STREQ(val, str.c_str());
@@ -138,23 +133,18 @@ int main() {
     // class Name test
     //
 
-    TEST(Name, No Nickname) {
-        Name name = Name("John", "Doe");
+    TEST(Name, Separate) {
+        Name name = Name("John", "Doe", "Nickname");
 
-        EXPECT_STREQ("Doe John", name.getFullName().c_str());
+        EXPECT_STREQ("Doe John (Nickname)", name.getFullName().c_str());
     } END;
 
-    TEST(Name, With Nickname) {
-        Name name = Name("John", "Doe", "Laci");
+    TEST(Name, With Full) {
+        Name name = Name("John Doe", "Laci");
 
         EXPECT_STREQ("Doe John (Laci)", name.getFullName().c_str());
-    } END;
-
-    TEST(Name, Parse Full) {
-        Name name = Name("Lederer Marton");
-
-        EXPECT_STREQ("Marton", name.first.c_str());
-        EXPECT_STREQ("Lederer", name.last.c_str());
+        EXPECT_STREQ("John", name.first.c_str());
+        EXPECT_STREQ("Doe", name.last.c_str());
     } END;
 
     //
@@ -206,14 +196,19 @@ int main() {
     //
     // class Contact test
     //
+    String exampleName = "Lederer Marton";
+    String exampleMobile = "+36708341340";
+    String exampleNick = "Marci";
+    String exampleAddr = "1034 Budapest, Prater utca 5.";
+    String exampleWorkNum = "+3618427433";
 
     TEST(Contact, all) {
         Contact c = Contact(
-            "Lederer Marton",
-            PhoneNumber("+36708341340"),
-            "Marci",
-            "1034 Budapest, Prater utca 5.",
-            PhoneNumber("+3618427433")
+            exampleName,
+            exampleMobile,
+            exampleNick,
+            exampleAddr,
+            exampleWorkNum
         );
 
         EXPECT_STREQ("Marton", c.getName().first.c_str());
@@ -229,7 +224,13 @@ int main() {
 
     TEST(Loader, contacts) {
         Loader manager = Loader();
-        Contact* c1 = new Contact("Doe John", PhoneNumber("+36601387744"));
+        Contact* c1 = new Contact(
+            exampleName,
+            exampleMobile,
+            exampleNick,
+            exampleAddr,
+            exampleWorkNum
+        );
 
         manager.addContact(c1);
         manager.list();
@@ -240,16 +241,26 @@ int main() {
         manager.list();
         manager.countryStats();
         EXPECT_EQ((size_t) 0u, manager.getContacts().size());
+
+        delete c1;
     } END;
 
     TEST(Loader, save) {
         Loader manager = Loader();
-        Contact* c1 = new Contact("Doe John", PhoneNumber("+36601387744"));
+        Contact* c1 = new Contact(
+            exampleName,
+            exampleMobile,
+            exampleNick,
+            exampleAddr,
+            exampleWorkNum
+        );
 
         manager.addContact(c1);
 
         manager.save();
         EXPECT_NE(-1, access("contacts.txt", F_OK));
+
+        delete c1;
     } END;
 
     TEST(Loader, save) {

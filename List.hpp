@@ -24,7 +24,8 @@ public:
     }
 
     ~List() {
-        ListItem* list = elements, curr = elements;
+        ListItem* list = elements;
+        ListItem* curr = nullptr;
 
         while (list != nullptr) {
             curr = list;

@@ -14,7 +14,11 @@ void Loader::list() {
 }
 
 void Loader::countryStats() {
+    List<CountryStat*> stats;
 
+    /*for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it) {
+        auto existingCountry = std::find_if(stats.begin(), stats.end(), )
+    }*/
 }
 
 void Loader::search(const String& q) {

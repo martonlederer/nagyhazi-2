@@ -3,8 +3,6 @@
 //
 
 #include "String.h"
-#include <cstring>
-#include <stdexcept>
 
 // másoló konstruktor
 String::String(const String& rhs) {
@@ -81,16 +79,14 @@ std::ostream& operator<<(std::ostream& os, const String& str) {
 }
 
 std::istream& operator>>(std::istream& is, String& str) {
-    str = "";
-    char c;
+    char ch;
+    is >> std::noskipws;
 
-    while (is >> c) {
-        if (isspace(c)) {
-            is.putback(c);
-            break;
-        }
-        str = str + String(c);
-    }
+    while (is >> ch && !isspace(ch))
+        str = str + ch;
+
+    is >> std::skipws;
+    is.putback(ch);
 
     return is;
 }
