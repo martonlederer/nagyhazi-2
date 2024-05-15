@@ -125,7 +125,7 @@ int main() {
         PhoneNumber num = PhoneNumber("+36308731649");
 
         EXPECT_STREQ("36", num.getCountryCode().c_str());
-        EXPECT_STREQ("+36 30 873 1649", num.toString().c_str());
+        EXPECT_STREQ("+36 308731649", num.toString().c_str());
         EXPECT_STREQ("🇭🇺 Magyarorszag", num.getCountry().c_str());
     } END;
 
@@ -140,7 +140,7 @@ int main() {
     } END;
 
     TEST(Name, With Full) {
-        Name name = Name("John Doe", "Laci");
+        Name name = Name("Doe John", "Laci");
 
         EXPECT_STREQ("Doe John (Laci)", name.getFullName().c_str());
         EXPECT_STREQ("John", name.first.c_str());
@@ -213,9 +213,9 @@ int main() {
 
         EXPECT_STREQ("Marton", c.getName().first.c_str());
         EXPECT_STREQ("Lederer Marton (Marci)", c.getName().getFullName().c_str());
-        EXPECT_STREQ("+36 70 834 1340", c.getNumber().toString().c_str());
+        EXPECT_STREQ("+36 708341340", c.getNumber().toString().c_str());
         EXPECT_STREQ("1034 Budapest, Prater utca 5.", c.getAddress().c_str());
-        EXPECT_STREQ("+36 1 842 7433", c.getWorkNumber().toString().c_str());
+        EXPECT_STREQ("+36 18427433", c.getWorkNumber().toString().c_str());
     } END;
 
     //

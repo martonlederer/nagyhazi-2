@@ -18,7 +18,7 @@ class List {
 public:
     // konstruktorok
     List() : elements(nullptr), count(0) {}
-    List(T array[], size_t len) : count(len) {
+    List(T array[], size_t len) : count(0) {
         for (size_t i = 0; i < len; i++)
             push(array[i]);
     }

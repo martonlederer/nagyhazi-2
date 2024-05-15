@@ -59,8 +59,8 @@ PhoneNumber::PhoneNumber(const String& raw) {
             if (raw[j + 1] != countries[i].dialCode[j]) break;
             if (j == dialCodeLen - 1) {
                 country = countries[i].dialCode;
-                num = String(raw.c_str() + i + 2);
-                return;
+                num = String(raw.c_str() + 1 + strlen(countries[i].dialCode));
+                break;
             }
         }
     }
