@@ -306,7 +306,7 @@ int main(int argc, char *argv[]) {
             std::cin >> idx;
 
             try {
-                manager.removeContact(idx);
+                manager.removeContact(idx - 1);
                 std::cout << "Névjegy törölve." << std::endl;
             } catch (...) {
                 std::cout << "A névjegyet nem sikerült törölni." << std::endl;

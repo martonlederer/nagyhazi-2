@@ -13,6 +13,11 @@ public:
     explicit PhoneNumber(const String& raw);
 
     /**
+     * Nem formázott szám
+     */
+    String raw() const { return String("+") + country + num; }
+
+    /**
      * Telefonszám összeillesztése string-be
      */
     String toString() const;

@@ -133,7 +133,7 @@ void Loader::save() {
 
         os << c.getName().first << ' '
            << c.getName().last << '\t'
-           << c.getNumber().toString() << '\t'
+           << c.getNumber().raw() << '\t'
            << c.getName().nickname << '\t'
            << c.getAddress() << '\t'
            << c.getWorkNumber().toString() << std::endl;
