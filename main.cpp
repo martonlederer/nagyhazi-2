@@ -307,6 +307,8 @@ int main(int argc, char *argv[]) {
                 workNum
             );
             manager.addContact(contact);
+
+            std::cout << "Névjegy felvéve." << std::endl;
         } else if (instruction == "delete") {
             std::cout << "Névjegyek: \n" << std::endl;
             manager.list(true);

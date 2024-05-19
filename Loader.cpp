@@ -46,8 +46,6 @@ void Loader::countryStats() {
             });
     }
 
-    stats.sort([](CountryStat a, CountryStat b) { return a.count > b.count; });
-
     for (List<CountryStat>::iterator it = stats.begin(); it != stats.end(); ++it)
         std::cout << " - " << (*it).name << ": " << (*it).count << std::endl;
 }
