@@ -57,8 +57,10 @@ String String::operator+(const String& rhs) const {
     tmp.size = size + rhs.size + 1;
     tmp.data = new char[tmp.size];
 
-    strcpy(tmp.data, data);
-    strcat(tmp.data, rhs.data);
+    if (size > 0) {
+        strcpy(tmp.data, data);
+        strcat(tmp.data, rhs.data);
+    } else strcpy(tmp.data, rhs.data);
 
     return tmp;
 }

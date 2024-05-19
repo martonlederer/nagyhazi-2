@@ -44,7 +44,9 @@ public:
     String(const String& rhs);
 
     // destruktor
-    ~String() { delete[] data; }
+    ~String() {
+        delete[] data;
+    }
 
     /**
      * C string/char array készítése String példányból
@@ -64,6 +66,9 @@ public:
     String& operator=(const char* rhs);
     String operator+(const String& rhs) const;
     char& operator[](size_t idx) const;
+
+    static void setEndChar(char end);
+    static char getEndChar();
 };
 
 bool operator==(const char* lhs, const String& rhs);

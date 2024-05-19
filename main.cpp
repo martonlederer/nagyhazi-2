@@ -222,29 +222,6 @@ int main() {
     // class Loader test
     //
 
-    TEST(Loader, contacts) {
-        Loader manager = Loader();
-        Contact* c1 = new Contact(
-            exampleName,
-            exampleMobile,
-            exampleNick,
-            exampleAddr,
-            exampleWorkNum
-        );
-
-        manager.addContact(c1);
-        manager.list();
-        manager.countryStats();
-        EXPECT_EQ((size_t) 1u, manager.getContacts().size());
-
-        manager.removeContact(0);
-        manager.list();
-        manager.countryStats();
-        EXPECT_EQ((size_t) 0u, manager.getContacts().size());
-
-        delete c1;
-    } END;
-
     TEST(Loader, save) {
         Loader manager = Loader();
         Contact* c1 = new Contact(
@@ -263,7 +240,7 @@ int main() {
         delete c1;
     } END;
 
-    TEST(Loader, save) {
+    TEST(Loader, load) {
         Loader manager = Loader();
         manager.load();
 

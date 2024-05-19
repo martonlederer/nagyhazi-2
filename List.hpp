@@ -45,8 +45,8 @@ public:
      */
     void push(T el) {
         ListItem* newItem = new ListItem{
-                nullptr,
-                el
+            nullptr,
+            el
         };
         count++;
 
