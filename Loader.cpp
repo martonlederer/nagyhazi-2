@@ -3,6 +3,7 @@
 //
 
 #include "Loader.h"
+#include "countries.h"
 #include <fstream>
 #include "memtrace.h"
 
@@ -20,12 +21,33 @@ void Loader::list() {
         std::cout << "[" << count++ << "] " << **it << std::endl;
 }
 
-void Loader::countryStats() {
-    List<CountryStat*> stats;
+bool test() { return true; }
 
-    /*for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it) {
-        auto existingCountry = std::find_if(stats.begin(), stats.end(), )
-    }*/
+void Loader::countryStats() {
+    List<CountryStat> stats;
+
+    for (size_t i = 0; i < 46; i++) {
+        Country country = countries[i];
+        size_t numsForCountry = std::count_if(
+            contacts.begin(),
+            contacts.end(),
+            [&country](Contact* contact) {
+                return contact->getNumber().getCountry() == country.name;
+            }
+        );
+
+
+        if (numsForCountry != 0)
+            stats.push(CountryStat{
+                country.name,
+                numsForCountry
+            });
+    }
+
+    std::cout << "Statisztika:" << std::endl;
+
+    for (List<CountryStat>::iterator it = stats.begin(); it != stats.end(); ++it)
+        std::cout << " - " << (*it).name << ": " << (*it).count << std::endl;
 }
 
 void Loader::search(const String& q) {

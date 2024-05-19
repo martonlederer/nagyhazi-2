@@ -19,4 +19,5 @@ add_executable(nagyhazi_2 main.cpp
         Loader.cpp
         memtrace.h
         memtrace.cpp
+        countries.cpp
 )

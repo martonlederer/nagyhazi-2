@@ -241,6 +241,7 @@ int main() {
     TEST(Loader, load) {
         Loader manager = Loader();
         manager.load();
+        manager.countryStats();
 
         EXPECT_NE((size_t) 0u, manager.getContacts().size());
     } END;

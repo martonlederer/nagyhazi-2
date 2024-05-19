@@ -131,6 +131,13 @@ public:
     class iterator {
         ListItem* curr;
     public:
+        using difference_type = std::ptrdiff_t;
+        using value_type = T;
+        using pointer = T*;
+        using reference = T&;
+        using iterator_category = std::forward_iterator_tag;
+
+        // Implement the rest of the iterator methods
         explicit iterator(ListItem* e = nullptr) : curr(e) {}
 
         iterator& operator++() {

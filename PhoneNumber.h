@@ -3,16 +3,7 @@
 
 #include "String.h"
 #include <cstring>
-
-struct Country {
-    const char* dialCode;
-    const char* name;
-};
-
-struct CountryStat {
-    String countryName;
-    int count;
-};
+#include "countries.h"
 
 class PhoneNumber {
     // telefonszám és országkód külön
