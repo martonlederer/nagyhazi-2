@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <stdexcept>
+#include "memtrace.h"
 
 template<typename T>
 class List {

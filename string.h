@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include <stdexcept>
+#include "memtrace.h"
 
 /**
  * Dinamikus string osztály

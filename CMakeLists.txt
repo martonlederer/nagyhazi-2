@@ -3,7 +3,7 @@ project(nagyhazi_2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(CXXFLAGS  "-Wall -Werror")
+set(CXXFLAGS  "-Wall -Werror -DMEMTRACE")
 set(CMAKE_CXX_FLAGS "${CXXFLAGS}")
 
 add_executable(nagyhazi_2 main.cpp
@@ -17,4 +17,6 @@ add_executable(nagyhazi_2 main.cpp
         PhoneNumber.cpp
         Name.cpp
         Loader.cpp
+        memtrace.h
+        memtrace.cpp
 )

@@ -4,6 +4,7 @@
 
 #include "Loader.h"
 #include <fstream>
+#include "memtrace.h"
 
 void Loader::addContact(Contact *c) { contacts.push(c); }
 
@@ -13,10 +14,10 @@ void Loader::removeContact(size_t idx) {
 }
 
 void Loader::list() {
-    unsigned int count = 1;
+    size_t count = 1;
 
-    for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it, ++count)
-        std::cout << "[" << count << "] " << **it << std::endl;
+    for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it)
+        std::cout << "[" << count++ << "] " << **it << std::endl;
 }
 
 void Loader::countryStats() {
@@ -110,4 +111,9 @@ void Loader::save() {
     }
 
     os.close();
+}
+
+Loader::~Loader() {
+    for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it)
+        delete *it;
 }

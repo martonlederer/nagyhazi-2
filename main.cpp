@@ -236,8 +236,6 @@ int main() {
 
         manager.save();
         EXPECT_NE(-1, access("contacts.txt", F_OK));
-
-        delete c1;
     } END;
 
     TEST(Loader, load) {

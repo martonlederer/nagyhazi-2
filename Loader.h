@@ -49,6 +49,8 @@ public:
      * Névjegyek visszaadása
      */
     List<Contact*>& getContacts() { return contacts; }
+
+    ~Loader();
 };
 
 #endif //NAGYHAZI_2_LOADER_H

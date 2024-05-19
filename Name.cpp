@@ -4,6 +4,7 @@
 
 #include "Name.h"
 #include <cstring>
+#include "memtrace.h"
 
 Name::Name(const String& full, const String& nname) {
     char* tempFull = new char[full.len() + 1];
@@ -12,6 +13,7 @@ Name::Name(const String& full, const String& nname) {
     last = String(tempFull);
     first = String(full.c_str() + strlen(tempFull) + 1);
     nickname = nname;
+    delete[] tempFull;
 }
 
 String Name::getFullName() const {
