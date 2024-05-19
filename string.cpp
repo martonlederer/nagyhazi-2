@@ -80,6 +80,15 @@ std::ostream& operator<<(std::ostream& os, const String& str) {
     return os << str.c_str();
 }
 
+String String::sub(size_t idx, size_t len) const {
+    String tmp = "";
+
+    for (size_t i = 0; i < len; i++)
+        tmp = tmp + operator[](i + idx);
+
+    return tmp;
+}
+
 std::istream& operator>>(std::istream& is, String& str) {
     char ch;
     is >> std::noskipws;

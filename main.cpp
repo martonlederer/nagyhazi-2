@@ -98,6 +98,14 @@ int main(int argc, char *argv[]) {
         EXPECT_STREQ(res.c_str(), "Hello World");
     } END;
 
+    // substring
+    TEST(Sring, sub) {
+        String test = "hello";
+        String sub = test.sub(1, 2);
+
+        EXPECT_STREQ(sub.c_str(), "el");
+    } END;
+
     std::stringstream ss;
     const char* val = "streamelt";
 

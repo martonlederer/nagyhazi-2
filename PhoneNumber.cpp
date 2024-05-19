@@ -21,7 +21,15 @@ PhoneNumber::PhoneNumber(const String& raw) {
 
 String PhoneNumber::toString() const {
     String full = '+';
-    full = full + country + " " + num;
+    if (num.len() == 9) {
+        full = full +
+            country + " " +
+            num.sub(0, 2) + " " +
+            num.sub(2, 3) + " " +
+            num.sub(5, 4);
+    } else
+        full = full + country + " " + num;
+
     return full;
 }
 
