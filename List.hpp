@@ -169,6 +169,35 @@ public:
         for (List<T>::iterator it = list.begin(); it != list.end(); ++it)
             push(*it);
     }
+
+    template<typename P>
+    void sort(P pred) {
+        if (count <= 1) return;
+
+        ListItem* sorted = nullptr;
+        ListItem* curr = elements;
+
+        while (curr != nullptr) {
+            ListItem* prevNext = curr->next;
+            ListItem* prev = nullptr;
+            ListItem* next = sorted;
+
+            while (next != nullptr && pred(next->value, curr->value)) {
+                prev = next;
+                next = next->next;
+            }
+
+            if (prev == nullptr) {
+                curr->next = sorted;
+                sorted = curr;
+            } else {
+                prev->next = curr;
+                curr->next = next;
+            }
+
+            curr = prevNext;
+        }
+    }
 };
 
 #endif

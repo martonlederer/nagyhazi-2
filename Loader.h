@@ -11,7 +11,7 @@
 #include "PhoneNumber.h"
 #include <iostream>
 #include <cstring>
-#include <algorithm>
+#include <fstream>
 
 class Loader {
     // névjegyek

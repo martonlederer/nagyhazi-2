@@ -4,7 +4,6 @@
 
 #include "Loader.h"
 #include "countries.h"
-#include <fstream>
 #include "memtrace.h"
 
 void Loader::addContact(Contact *c) { contacts.push(c); }
@@ -44,6 +43,7 @@ void Loader::countryStats() {
             });
     }
 
+    stats.sort([](CountryStat a, CountryStat b) { return a.count > b.count; });
     std::cout << "Statisztika:" << std::endl;
 
     for (List<CountryStat>::iterator it = stats.begin(); it != stats.end(); ++it)
