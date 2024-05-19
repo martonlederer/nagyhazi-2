@@ -281,12 +281,12 @@ int main(int argc, char *argv[]) {
             std::cin >> nickname;
             std::cout << std::endl;
 
-            String::setSep(false);
+            String::setSep(true);
             std::cout << "Cím: ";
             String addr;
             std::cin >> addr;
             std::cout << std::endl;
-            String::setSep(true);
+            String::setSep(false);
 
             std::cout << "Munkahelyi szám: ";
             String workNum;

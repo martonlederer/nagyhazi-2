@@ -94,9 +94,12 @@ String String::sub(size_t idx, size_t len) const {
 std::istream& operator>>(std::istream& is, String& str) {
     char ch;
     is >> std::noskipws;
+    bool sep = String::getSep();
 
-    while (is >> ch && String::getSep() ? !isspace(ch) : ch != '\n')
+    while (is >> ch && ch != '\n') {
+        if (!sep && isspace(ch)) break;
         str = str + ch;
+    }
 
     is >> std::skipws;
 

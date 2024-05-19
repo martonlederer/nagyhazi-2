@@ -77,7 +77,7 @@ public:
     /**
      * Karakter beállítása, ahol olvasáskor véget ér a string
      */
-    static void setSep(bool ch);
+    static void setSep(bool val);
 
     /**
      * Szétválasztó karakter visszaadása
