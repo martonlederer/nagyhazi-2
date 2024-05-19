@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
         PhoneNumber num = PhoneNumber("+36308731649");
 
         EXPECT_STREQ("36", num.getCountryCode().c_str());
-        EXPECT_STREQ("+36 308731649", num.toString().c_str());
+        EXPECT_STREQ("+36 30 873 1649", num.toString().c_str());
         EXPECT_STREQ("🇭🇺 Magyarorszag", num.getCountry().c_str());
     } END;
 
@@ -221,7 +221,7 @@ int main(int argc, char *argv[]) {
 
         EXPECT_STREQ("Marton", c.getName().first.c_str());
         EXPECT_STREQ("Lederer Marton (Marci)", c.getName().getFullName().c_str());
-        EXPECT_STREQ("+36 708341340", c.getNumber().toString().c_str());
+        EXPECT_STREQ("+36 70 834 1340", c.getNumber().toString().c_str());
         EXPECT_STREQ("1034 Budapest, Prater utca 5.", c.getAddress().c_str());
         EXPECT_STREQ("+36 18427433", c.getWorkNumber().toString().c_str());
     } END;
@@ -281,10 +281,12 @@ int main(int argc, char *argv[]) {
             std::cin >> nickname;
             std::cout << std::endl;
 
+            String::setSep(false);
             std::cout << "Cím: ";
             String addr;
             std::cin >> addr;
             std::cout << std::endl;
+            String::setSep(true);
 
             std::cout << "Munkahelyi szám: ";
             String workNum;

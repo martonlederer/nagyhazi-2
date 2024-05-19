@@ -16,6 +16,7 @@
 class String {
     size_t size; // string mérete, '\0' nélkül
     char* data; // a string C stringként
+    static bool sep;
 public:
     /**
      * Paraméter nélküli konstruktor
@@ -68,6 +69,9 @@ public:
     String operator+(const String& rhs) const;
     char& operator[](size_t idx) const;
     String sub(size_t idx, size_t len) const;
+
+    static void setSep(bool ch);
+    static bool getSep();
 };
 
 bool operator==(const char* lhs, const String& rhs);

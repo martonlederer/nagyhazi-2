@@ -4,6 +4,8 @@
 
 #include "String.h"
 
+bool String::sep = false;
+
 // másoló konstruktor
 String::String(const String& rhs) {
     size = rhs.len();
@@ -93,11 +95,13 @@ std::istream& operator>>(std::istream& is, String& str) {
     char ch;
     is >> std::noskipws;
 
-    while (is >> ch && !isspace(ch))
+    while (is >> ch && String::getSep() ? !isspace(ch) : ch != '\n')
         str = str + ch;
 
     is >> std::skipws;
-    is.putback(ch);
 
     return is;
 }
+
+void String::setSep(bool v) { String::sep = v; }
+bool String::getSep() { return String::sep; }
