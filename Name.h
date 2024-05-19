@@ -19,10 +19,6 @@ public:
      * Teljes név összeillesztése
      */
     String getFullName() const;
-
-    ~Name() {
-
-    }
 };
 
 #endif //NAGYHAZI_2_NAME_H

@@ -68,12 +68,24 @@ public:
     String& operator=(const char* rhs);
     String operator+(const String& rhs) const;
     char& operator[](size_t idx) const;
+
+    /**
+     * Substring készítése adott indextől, adott hosszúságban
+     */
     String sub(size_t idx, size_t len) const;
 
+    /**
+     * Karakter beállítása, ahol olvasáskor véget ér a string
+     */
     static void setSep(bool ch);
+
+    /**
+     * Szétválasztó karakter visszaadása
+     */
     static bool getSep();
 };
 
+// globális operátorok
 bool operator==(const char* lhs, const String& rhs);
 std::ostream& operator<<(std::ostream& os, const String& str);
 std::istream& operator>>(std::istream& is, String& str);

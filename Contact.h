@@ -44,8 +44,6 @@ public:
      * Munkahelyi szám visszaadása
      */
     PhoneNumber getWorkNumber() const { return workNumber; }
-
-    ~Contact() {}
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Contact& c) {
