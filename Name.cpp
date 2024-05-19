@@ -17,8 +17,7 @@ Name::Name(const String& full, const String& nname) {
 }
 
 String Name::getFullName() const {
-    String temp = last;
-    temp = temp + " " + first;
+    String temp = last + " " + first;
 
     if (nickname != "") {
         temp = temp + " (" + nickname + ")";

@@ -28,7 +28,7 @@ public:
     /**
      * Névjegyek listázása
      */
-    void list();
+    void list(bool shrt = false);
     /*
      * Statisztika: melyik országhoz hány telefonszám tartozik
      */

@@ -8,13 +8,13 @@
 #include "Contact.h"
 #include "Loader.h"
 
-#ifndef CPORTA
+#ifdef CPORTA
 #include "gtest_lite.h"
 #endif
 
-int main() {
+int main(int argc, char *argv[]) {
 // teszt üzemmód
-#ifndef CPORTA
+#ifdef CPORTA
     GTINIT(std::cin);
 
     //
@@ -249,6 +249,84 @@ int main() {
     GTEND(std::cerr);
 #else
     // normál üzemmód (console app)
+    if (argc > 1) {
+        String instruction = argv[1];
+
+        Loader manager = Loader();
+        manager.load();
+
+        if (instruction == "add") {
+            std::cout << "Új névjegy felvétele:" << std::endl;
+
+            std::cout << "\nKeresztnév: ";
+            String firstname;
+            std::cin >> firstname;
+            std::cout << std::endl;
+
+            std::cout << "Vezetéknév: ";
+            String lastname;
+            std::cin >> lastname;
+            std::cout << std::endl;
+
+            std::cout << "Becenév: ";
+            String nickname;
+            std::cin >> nickname;
+            std::cout << std::endl;
+
+            std::cout << "Cím: ";
+            String addr;
+            std::cin >> addr;
+            std::cout << std::endl;
+
+            std::cout << "Munkahelyi szám: ";
+            String workNum;
+            std::cin >> workNum;
+            std::cout << std::endl;
+
+            std::cout << "Privát szám: ";
+            String mobile;
+            std::cin >> mobile;
+            std::cout << std::endl;
+
+            String fullName = lastname + " " + firstname;
+            Contact* contact = new Contact(
+                fullName,
+                mobile,
+                nickname,
+                addr,
+                workNum
+            );
+            manager.addContact(contact);
+        } else if (instruction == "delete") {
+            std::cout << "Névjegyek: \n" << std::endl;
+            manager.list(true);
+            std::cout << "\nA törléshez kérem adja meg a törölni kívánt névjegy sorszámát: ";
+
+            int idx;
+            std::cin >> idx;
+
+            try {
+                manager.removeContact(idx);
+                std::cout << "Névjegy törölve." << std::endl;
+            } catch (...) {
+                std::cout << "A névjegyet nem sikerült törölni." << std::endl;
+            }
+        } else if (instruction == "list") {
+            std::cout << "Névjegyek: \n" << std::endl;
+            manager.list();
+        } else if (instruction == "search") {
+            std::cout << "Kulcsszó megadása: ";
+            String query;
+            std::cin >> query;
+
+            manager.search(query);
+        } else if (instruction == "stats") {
+            std::cout << "Statisztika:" << std::endl;
+            manager.countryStats();
+        }
+
+        manager.save();
+    }
 #endif
     return 0;
 }

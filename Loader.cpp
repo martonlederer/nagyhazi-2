@@ -13,14 +13,17 @@ void Loader::removeContact(size_t idx) {
     delete c;
 }
 
-void Loader::list() {
+void Loader::list(bool shrt) {
     size_t count = 1;
 
-    for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it)
-        std::cout << "[" << count++ << "] " << **it << std::endl;
+    for (List<Contact*>::iterator it = contacts.begin(); it != contacts.end(); ++it) {
+        if (!shrt) std::cout << "[" << count++ << "] " << **it << std::endl;
+        else
+            std::cout << "[" << count++ << "] "
+                << (**it).getName().last << " " << (**it).getName().first
+                << " (" << (**it).getNumber().toString() << ")" << std::endl;
+    }
 }
-
-bool test() { return true; }
 
 void Loader::countryStats() {
     List<CountryStat> stats;
@@ -44,7 +47,6 @@ void Loader::countryStats() {
     }
 
     stats.sort([](CountryStat a, CountryStat b) { return a.count > b.count; });
-    std::cout << "Statisztika:" << std::endl;
 
     for (List<CountryStat>::iterator it = stats.begin(); it != stats.end(); ++it)
         std::cout << " - " << (*it).name << ": " << (*it).count << std::endl;
@@ -68,10 +70,15 @@ void Loader::search(const String& q) {
     firstNameRes.concat(lastNameRes);
     firstNameRes.concat(nickNameRes);
 
-    std::cout << "Kereses eredmenye:" << std::endl;
+    std::cout << "Keresás eredmánye:" << std::endl;
+
+    if (firstNameRes.size() == 0) {
+        std::cout << "Nincs találat:(" << std::endl;
+        return;
+    }
 
     for (List<Contact*>::iterator it = firstNameRes.begin(); it != firstNameRes.end(); ++it)
-        std::cout << *it << std::endl;
+        std::cout << **it << std::endl;
 }
 
 void Loader::load() {
